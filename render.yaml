@@ -45,7 +45,6 @@ services:
     name: safety-mobility-frontend
     runtime: static
     plan: free
-    region: oregon
     buildCommand: bash scripts/render-build-flutter-web.sh project6/frontend "https://$BACKEND_HOST" "wss://$BACKEND_HOST"
     staticPublishPath: project6/frontend/build/web
     routes:
@@ -63,7 +62,6 @@ services:
     name: safety-mobility-mobile
     runtime: static
     plan: free
-    region: oregon
     buildCommand: bash scripts/render-build-flutter-web.sh forher2/mobile "https://$BACKEND_HOST/api" "wss://$BACKEND_HOST"
     staticPublishPath: forher2/mobile/build/web
     routes:
