@@ -55,7 +55,7 @@ services:
         fromService:
           name: safety-mobility-backend
           type: web
-          property: host
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
 
   - type: web
     name: safety-mobility-mobile
@@ -71,7 +71,7 @@ services:
         fromService:
           name: safety-mobility-backend
           type: web
-          property: host
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
 
 databases:
   - name: safety-mobility-db
