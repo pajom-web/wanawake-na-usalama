@@ -1,0 +1,8 @@
+{
+  "C_Cpp.default.configurationProvider": "platformio.platformio-ide",
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/project6/iot/esp32_danger_button/compile_commands.json",
+  "C_Cpp.default.compilerPath": "${env:USERPROFILE}/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++.exe",
+  "files.associations": {
+    "*.ino": "cpp"
+  }
+}

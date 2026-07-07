@@ -1,0 +1,16 @@
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+**/build/
+**/__pycache__/
+*.py[cod]
+*.log
+.env
+.venv/
+.hosted-web/
+.run-logs/
+.tools/
+db.sqlite3
+staticfiles/

@@ -1,0 +1,59 @@
+{
+  "configurations": [
+    {
+      "name": "ESP32 Arduino",
+      "configurationProvider": "platformio.platformio-ide",
+      "compilerPath": "${env:USERPROFILE}/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++.exe",
+      "compileCommands": "${workspaceFolder}/iot/esp32_danger_button/compile_commands.json",
+      "includePath": [
+        "${workspaceFolder}/iot/esp32_danger_button/**",
+        "${workspaceFolder}/iot/esp32_danger_button/src",
+        "${workspaceFolder}/iot/esp32_danger_button/.pio/libdeps/**",
+        "${workspaceFolder}/iot/esp32_danger_button/.pio/build/nodemcu-32s/**",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/cores/esp32",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/variants/nodemcu-32s",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/**",
+        "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/**",
+        "${env:USERPROFILE}/.platformio/packages/toolchain-xtensa-esp32/**",
+        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/hardware/esp32/**",
+        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/tools/**"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/iot/esp32_danger_button",
+          "${workspaceFolder}/iot/esp32_danger_button/.pio/libdeps",
+          "${workspaceFolder}/iot/esp32_danger_button/.pio/build/nodemcu-32s",
+          "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32",
+          "${env:USERPROFILE}/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
+          "${env:LOCALAPPDATA}/Arduino15/packages/esp32/hardware/esp32"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "defines": [
+        "ARDUINO=10819",
+        "ARDUINO_ESP32_DEV",
+        "ARDUINO_ARCH_ESP32",
+        "ARDUINO_NodeMCU_32S",
+        "HAVE_CONFIG_H",
+        "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\"",
+        "UNITY_INCLUDE_CONFIG_H",
+        "WITH_POSIX",
+        "_GNU_SOURCE",
+        "IDF_VER=\"v4.4.7-dirty\"",
+        "ESP_PLATFORM",
+        "_POSIX_READER_WRITER_LOCKS",
+        "ESP32",
+        "ARDUINO_PARTITION_default",
+        "CONFIG_IDF_TARGET_ESP32"
+      ],
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
+}

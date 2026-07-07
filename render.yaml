@@ -1,0 +1,86 @@
+services:
+  - type: web
+    name: safety-mobility-backend
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: cd project6/backend && pip install -r requirements.txt && python manage.py collectstatic --no-input
+    startCommand: cd project6/backend && python manage.py migrate --no-input && daphne -b 0.0.0.0 -p $PORT safety_mobility.asgi:application
+    healthCheckPath: /api/health/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: safety-mobility-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com,localhost,127.0.0.1"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://safety-mobility-frontend.onrender.com,https://safety-mobility-mobile.onrender.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://safety-mobility-frontend.onrender.com,https://safety-mobility-mobile.onrender.com"
+      - key: CORS_ALLOW_ALL_ORIGINS
+        value: "False"
+      - key: SESSION_COOKIE_SAMESITE
+        value: "None"
+      - key: CSRF_COOKIE_SAMESITE
+        value: "None"
+      - key: SESSION_COOKIE_SECURE
+        value: "True"
+      - key: CSRF_COOKIE_SECURE
+        value: "True"
+      - key: SECURE_SSL_REDIRECT
+        value: "True"
+      - key: SECURE_HSTS_SECONDS
+        value: "31536000"
+      - key: TWILIO_ENABLED
+        value: "False"
+      - key: IOT_DEVICE_API_KEY
+        generateValue: true
+
+  - type: web
+    name: safety-mobility-frontend
+    runtime: static
+    plan: free
+    region: oregon
+    buildCommand: bash scripts/render-build-flutter-web.sh project6/frontend "https://$BACKEND_HOST" "wss://$BACKEND_HOST"
+    staticPublishPath: project6/frontend/build/web
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: BACKEND_HOST
+        fromService:
+          name: safety-mobility-backend
+          type: web
+          property: host
+
+  - type: web
+    name: safety-mobility-mobile
+    runtime: static
+    plan: free
+    region: oregon
+    buildCommand: bash scripts/render-build-flutter-web.sh forher2/mobile "https://$BACKEND_HOST/api" "wss://$BACKEND_HOST"
+    staticPublishPath: forher2/mobile/build/web
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: BACKEND_HOST
+        fromService:
+          name: safety-mobility-backend
+          type: web
+          property: host
+
+databases:
+  - name: safety-mobility-db
+    databaseName: safety_mobility
+    user: safety_mobility
+    plan: free
+    postgresMajorVersion: "15"
+    ipAllowList: []

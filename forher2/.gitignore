@@ -1,0 +1,10 @@
+.tool-state/
+.venv/
+__pycache__/
+*.py[cod]
+backend/db.sqlite3
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+*.log
